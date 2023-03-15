@@ -37,14 +37,14 @@ class LLaMALLM(LLM):
             top_p=0.95,
             repetition_penalty=1.15,
         )
-
-        generation_output = model.generate(
-            input_ids=input_ids,
-            generation_config=generation_config,
-            return_dict_in_generate=True,
-            output_scores=True,
-            max_new_tokens=128,
-        )
+        with torch.no_grad():
+            generation_output = model.generate(
+                input_ids=input_ids,
+                generation_config=generation_config,
+                return_dict_in_generate=True,
+                output_scores=True,
+                max_new_tokens=128,
+            )
         response = ""
         for s in generation_output.sequences:
             response += tokenizer.decode(s)

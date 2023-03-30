@@ -1,0 +1,5 @@
+langchain==0.0.126
+llama_index==0.4.26
+peft==0.3.0.dev0
+torch==1.12.1+cu116
+git+https://github.com/huggingface/transformers.git

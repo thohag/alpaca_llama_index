@@ -4,15 +4,15 @@ from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from llama_index import LangchainEmbedding
 from llama_index import SimpleDirectoryReader, LLMPredictor, PromptHelper, GPTSimpleVectorIndex
 from peft import PeftModel
-from transformers import LLaMATokenizer, LLaMAForCausalLM, GenerationConfig
+from transformers import LlamaTokenizer, LlamaForCausalLM, GenerationConfig
 
 
 hf_model_path = "models/llama-7b"
 alpaca_model_path = "models/lora-alpaca"
 
-tokenizer = LLaMATokenizer.from_pretrained(hf_model_path)
+tokenizer = LlamaTokenizer.from_pretrained(hf_model_path)
 
-model = LLaMAForCausalLM.from_pretrained(
+model = LlamaForCausalLM.from_pretrained(
     hf_model_path,
     load_in_8bit=True, #Dissabling could solve some errors
     device_map="auto",
